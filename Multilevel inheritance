@@ -1,0 +1,28 @@
+
+class Shape:
+    def __init__(self, sides):
+        self.sides = sides
+
+    def num_sides(self):
+        print(f"Shape has {self.sides} sides.")
+
+class Colour:
+    def __init__(self, colors):
+        self.colors = colors
+
+    def num_colors(self):
+        print(f"Object has {self.colors} colors.")
+
+class Design(Shape, Color):
+    def __init__(self, sides, colors):
+        Shape.__init__(self, sides)
+        Color.__init__(self, colors)
+
+
+    def num_sides(self):
+        print(f"In Design class: sides are customized to {self.sides} sides.")
+
+obj = Design(4, 3)
+
+obj.num_sides()   # This will call subclass version
+obj.num_colors()  # This will call Color class version
