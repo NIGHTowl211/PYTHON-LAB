@@ -1,0 +1,54 @@
+class Person:
+    def get_roll(self):
+        return
+
+class Student(Person):
+    def __init__(self, roll_no):
+        self.roll_no = roll_no
+
+    def get_roll(self):
+        return f"Student Roll Number: {self.roll_no}"
+
+class Staff(Person):
+    def __init__(self, staff_id):
+        self.staff_id = staff_id
+
+    def get_roll(self):
+        return f"Staff ID: {self.staff_id}"
+
+class Grade:
+    def calculate(self, marks1, marks2=None, marks3=None):
+        if marks2 is None and marks3 is None:
+            return marks1
+        elif marks3 is None:
+            return (marks1 + marks2) / 2
+        else:
+            return (marks1 + marks2 + marks3) / 3
+
+class Score:
+    def __init__(self, marks):
+        self.marks = marks
+
+    def __add__(self, other):
+        if isinstance(other, Score):
+            return Score(self.marks + other.marks)
+        return NotImplemented
+
+    def __str__(self):
+        return f"Score: {self.marks}"
+
+# Demonstration
+student1 = Student(101)
+staff1 = Staff(5001)
+print(student1.get_roll())
+print(staff1.get_roll())
+
+grade = Grade()
+print(grade.calculate(85))
+print(grade.calculate(70, 90))
+print(grade.calculate(75, 85, 95))
+
+score1 = Score(88)
+score2 = Score(92)
+sum_score = score1 + score2
+print(sum_score)
